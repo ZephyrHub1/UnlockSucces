@@ -13,6 +13,12 @@
       --btn: #0ea5e9;
       --muted:#94a3b8;
       --warning:#f59e0b;
+
+      /* Màu chữ đẹp hơn */
+      --text-primary: #e0e7ff;    /* sáng, nhẹ nhàng */
+      --text-secondary: #94a3b8;  /* ghi nhạt */
+      --text-accent: #60a5fa;     /* xanh sáng */
+      --text-important: #facc15;  /* vàng nổi bật */
     }
     *{box-sizing:border-box}
     body{
@@ -21,18 +27,32 @@
       background: radial-gradient(1200px 600px at 10% 10%, rgba(14,165,233,0.06), transparent),
                   radial-gradient(800px 400px at 90% 90%, rgba(56,189,248,0.03), transparent);
       background-color:var(--bg);
-      color:#e6eef8;
+      color: var(--text-primary);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       padding:28px;
       display:flex;
-      justify-content:center;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Chữ to ZephyrHub đầu trang */
+    header {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--text-accent);
+      text-shadow: 0 0 15px #60a5faaa;
+      margin-bottom: 24px;
+      user-select: none;
+      font-family: "Inter", Arial, sans-serif;
     }
 
     .wrap{
       width:100%;
       max-width:720px;
       padding:22px;
+      flex-grow: 1;
     }
 
     .card{
@@ -75,11 +95,15 @@
       cursor:pointer;
       font-weight:600;
       box-shadow: 0 6px 14px rgba(14,165,233,0.14);
+      transition: background-color 0.3s ease;
+    }
+    .btn-copy:hover {
+      background-color: #0c87c6;
     }
     .btn-copy:active{ transform:translateY(1px) }
 
     h2{
-      color:var(--accent);
+      color: var(--text-accent);
       margin:6px 0 10px;
       font-size:20px;
     }
@@ -90,6 +114,7 @@
       border-radius:12px;
       margin-top:8px;
       border:1px solid rgba(255,255,255,0.02);
+      color: var(--text-primary);
     }
 
     .guide p{ margin:8px 0; line-height:1.5 }
@@ -104,11 +129,17 @@
       margin-bottom:8px;
     }
 
-    .important{ color: var(--warning); font-weight:700; margin-top:8px; display:block }
+    .important{ 
+      color: var(--text-important); 
+      font-weight:700; 
+      margin-top:8px; 
+      display:block;
+    }
 
     ul.steps{
       padding-left:20px;
       margin:10px 0;
+      color: var(--text-primary);
     }
     ul.steps li{
       margin:8px 0;
@@ -123,10 +154,14 @@
     @media (max-width:520px){
       .script-box{ font-size:12px }
       .btn-copy{ padding:9px 12px }
+      header { font-size: 2.5rem; }
     }
   </style>
 </head>
 <body>
+
+  <header>ZephyrHub</header>
+
   <div class="wrap">
     <div class="card">
       <div class="copy-area">
@@ -150,7 +185,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ZephyrHub1/NoLag-Dupe
           <li><b>Bước 4:</b> <b>Tắt Verify Teleport</b> (mấu chốt để sử dụng tất cả chức năng, nếu không tắt sẽ bị mất data).</li>
         </ul>
 
-        <p>➡️ Sau đó out game → vào lại → rồi execute script và tận hưởng 😎</p>
+        <p>➡️ Sau đó execute script và tận hưởng 😎</p>
       </div>
 
       <footer>© 2025 ZephyrHub</footer>
@@ -159,12 +194,11 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ZephyrHub1/NoLag-Dupe
 
   <script>
     function copyScript() {
-      // Lấy chính xác nội dung trong thẻ và copy (giữ nguyên dấu ngoặc kép)
       const text = document.getElementById('scriptText').innerText.trim();
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(()=> {
+        navigator.clipboard.writeText(text).then(() => {
           alert('Đã copy script!');
-        }).catch(()=> {
+        }).catch(() => {
           fallbackCopy(text);
         });
       } else {
@@ -172,7 +206,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ZephyrHub1/NoLag-Dupe
       }
     }
 
-    function fallbackCopy(text){
+    function fallbackCopy(text) {
       const ta = document.createElement('textarea');
       ta.value = text;
       document.body.appendChild(ta);
@@ -180,11 +214,12 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ZephyrHub1/NoLag-Dupe
       try {
         document.execCommand('copy');
         alert('Đã copy script!');
-      } catch(e) {
+      } catch (e) {
         prompt('Hãy copy thủ công:', text);
       }
       document.body.removeChild(ta);
     }
   </script>
+
 </body>
 </html>
